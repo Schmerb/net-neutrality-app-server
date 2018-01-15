@@ -1,0 +1,98 @@
+// // // // // // // // // //
+//
+//      Burger 
+//
+// // // // // // // // // //
+
+
+// * * * * * * * * * * * * * * * * * * * *
+// burger BUTTON
+// * * * * * * * * * * * * * * * * * * * *
+
+.burger-btn {
+    @include middleR(30px);
+    background: transparent;
+    width: 35px; 
+    height: 30px;
+    padding: 0;
+    border: none;
+    z-index: 7;
+    cursor: pointer;
+
+    &:hover {
+        .burger-icon {
+            background: $primary;
+            // @include transition;
+            &:after, &:before {
+                background: $primary;
+            }
+            
+            &.open {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+// * * * * * * * * * * * * * * * * * * * *
+// burger ICON
+// * * * * * * * * * * * * * * * * * * * *
+.burger-icon,
+.burger-icon::after,
+.burger-icon::before {
+    background-color: $offwhite;
+    width: 35px;
+    height: 4px;
+    -webkit-transition: background-color 1s ease-in-out, 
+                        transform 0.8s ease-in-out, 
+                        top 0.8s ease-in-out;
+    -moz-transition: background-color 1s ease-in-out, 
+                     transform 0.8s ease-in-out, 
+                     top 0.8s ease-in-out;
+    transition: background-color 1s ease-in-out, 
+                transform 0.8s ease-in-out, 
+                top 0.8s ease-in-out;
+}
+
+.burger-icon {
+    opacity: 1;
+    @include middle(50%);
+    &.open {
+        @include transition(0.3s);
+        background-color: transparent;
+
+        &:before, &:after {
+            @include transition(0.3s);
+            -webkit-transition: background-color 0.3s ease-in-out, 
+                                transform 0.8s ease-in-out, 
+                                top 0.8s ease-in-out;
+            -moz-transition: background-color 0.3s ease-in-out, 
+                             transform 0.8s ease-in-out, 
+                             top 0.8s ease-in-out;
+            transition: background-color 0.3s ease-in-out, 
+                        transform 0.8s ease-in-out, 
+                        top 0.8s ease-in-out;
+            background-color: $offwhite;
+            top: 0;
+        }
+
+        &:before {
+            transform: rotate(225deg);
+        }
+        &:after {
+            transform: rotate(-225deg);
+        }
+    }
+
+    &:before {
+        @include middleL (0, -10px, 0);
+        content: '';
+    }
+
+    &:after {
+        @include middleL(0, 10px, 0);
+        content: '';
+        
+    }
+    
+}

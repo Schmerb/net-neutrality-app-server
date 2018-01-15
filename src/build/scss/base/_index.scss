@@ -1,0 +1,62 @@
+// // // // // // // // // //
+//
+//      Base
+//
+// // // // // // // // // //
+
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+*, 
+*:before, 
+*:after {
+    box-sizing: inherit;
+}
+
+
+body {  
+    position: relative;
+    background: $offwhite;
+    min-height: 100vh;
+    min-width: 320px;
+    margin: 0;
+    @include mediaMin(500px) {
+        overflow-x: hidden;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 0;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.clearfix {
+    clear: both;
+}
+
+// * * * * * * * * * * * * * * * * * * * *
+// Dim background
+// * * * * * * * * * * * * * * * * * * * *
+
+.dim {
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
