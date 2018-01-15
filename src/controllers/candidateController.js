@@ -24,7 +24,8 @@ exports.getAllCandidates = (req, res) => {
 };
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-// Returns all House candidates
+// Returns all House candidates, uses queries from request
+// to limit search
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 exports.getHouseCandidates = (req, res) => {
     let queries = {};
@@ -41,7 +42,8 @@ exports.getHouseCandidates = (req, res) => {
 };
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-// Returns all Senate candidates
+// Returns all Senate candidates, uses queries from request
+// to limit search
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 exports.getSenateCandidates = (req, res) => {
     let queries = {};
