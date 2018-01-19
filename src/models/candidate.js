@@ -33,6 +33,10 @@ const schemaObj = {
     source: {
         type: String
     },
+    imgUrl: {
+        type: String,
+        default: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Bob_Casey%2C_official_Senate_photo_portrait%2C_c2008.jpg'
+    },
     'house-senate': {
         type: String,
         required: true
@@ -41,6 +45,12 @@ const schemaObj = {
 
 // API Res
 function apiRepr () {
+    if(this._id.toString() === '5a5bda201a75bbcbb139cf6c') {
+        this.imgUrl = 'http://www.kellyforussenate.com/images/happybrian.jpg';
+    }
+    if(this._id.toString() === '5a5bda201a75bbcbb139cf6d') {
+        this.imgUrl = 'https://res.cloudinary.com/crowdpac/image/upload/c_fill,f_auto,g_xy_center,h_160,q_auto,w_220,x_200,y_171/v1492124616/candidates/cand5838851ab0c132cb6c466d38';
+    }
     return {
         id: this._id,
         firstName: this.firstName || '',
@@ -51,6 +61,7 @@ function apiRepr () {
         campaignWebsite: this.campaignWebsite || '',
         supportsNetNeutrality: this.supportsNetNeutrality || 'unknown',
         source: this.source || '',
+        imgUrl: this.imgUrl,
         'house-senate': this['house-senate'],
     };
 }
