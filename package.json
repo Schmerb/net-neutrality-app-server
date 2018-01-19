@@ -5,7 +5,7 @@
     "author": "",
     "main": "server.js",
     "scripts": {
-        "start": "CLIENT_ORIGIN='https://suspicious-franklin-d3316b.netlify.com/' node server.js",
+        "start": "node server.js",
         "test": "mocha"
     },
     "dependencies": {
