@@ -33,7 +33,7 @@ app.use(
   cors({
       origin: [  // Whitelist 
           CLIENT_ORIGIN,
-          'https://suspicious-franklin-d3316b.netlify.com/'
+          'https://net-neutrality.netlify.com/'
       ]
   })
 );
