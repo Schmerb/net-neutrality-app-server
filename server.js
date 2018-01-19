@@ -1,15 +1,12 @@
 'use strict';
 
 const express          = require('express'),
-      session          = require('express-session'),
-      MongoStore       = require('connect-mongo')(session),
       morgan           = require('morgan'),
       mongoose         = require('mongoose'),
       bodyParser       = require('body-parser'),
       cookieParser     = require('cookie-parser'),
       path             = require('path'),
-      engine           = require('ejs-mate'),
-      busboyBodyParser = require('busboy-body-parser');
+      engine           = require('ejs-mate');
 
 const router                 = require('routes');
 const { DATABASE_URL, PORT } = require('./config/database');
@@ -45,16 +42,6 @@ app.use(express.static(path.join(__dirname, 'public'))); // root folder for stat
 app.use(morgan('common')); // log the http layer
 app.use(cookieParser()); // parses and handles cookies
 app.use(bodyParser.json()); // parses request and exposes it on req.body
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(busboyBodyParser({ limit: '10mb' })); // required for gridFS file store 
-
-// required for passport
-app.use(session({ 
-  secret: 'secret',
-  store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  resave: false,
-  saveUninitialized: false
-}));
 
 
 // ROUTES

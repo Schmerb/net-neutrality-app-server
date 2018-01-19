@@ -43,14 +43,14 @@ const schemaObj = {
 function apiRepr () {
     return {
         id: this._id,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        state: this.state,
-        district: this.district,
-        party: this.party,
-        campaignWebsite: this.campaignWebsite,
-        supportsNetNeutrality: this.supportsNetNeutrality,
-        source: this.source,
+        firstName: this.firstName || '',
+        lastName: this.lastName || '',
+        state: this.state || '',
+        district: this.district || 'unknown',
+        party: this.party || '',
+        campaignWebsite: this.campaignWebsite || '',
+        supportsNetNeutrality: this.supportsNetNeutrality || 'unknown',
+        source: this.source || '',
         'house-senate': this['house-senate'],
     };
 }

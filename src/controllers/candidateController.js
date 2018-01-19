@@ -6,14 +6,18 @@ const { HouseCandidate, SenateCandidate } = require('models/candidate');
 // Returns all candidates of house and senate
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 exports.getAllCandidates = (req, res) => {
+    let queries = {};
+    for (let key of Object.keys(req.query)) {
+        queries[key] = req.query[key];
+    }
     let _res = {};
     HouseCandidate
-        .find({})
+        .find(queries)
         .exec()
         .then(houseCandidates => {
             _res.house = houseCandidates.map(candidate => candidate.apiRepr());
             return SenateCandidate
-                .find({})
+                .find(queries)
                 .exec()
         })
         .then(senateCandidateas => {

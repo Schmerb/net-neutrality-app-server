@@ -8,15 +8,15 @@ const router = express.Router();
 router.use(bodyParser.json());
 
 
-// controllers
-const mainController      = require('controllers/mainController');
-const candidateController = require('controllers/candidateController');
+const { router: apiRouter }  = require('./apiRouter');
+const { router: docsRouter } = require('./docsRouter');
+
+// API
+router.use('/api/v1', apiRouter);
+
+// DOCS
+router.use('/docs', docsRouter);
 
 
-router.get('/', mainController.getIndex);
-
-router.get('/candidates/all',    candidateController.getAllCandidates);
-router.get('/candidates/house',  candidateController.getHouseCandidates);
-router.get('/candidates/senate', candidateController.getSenateCandidates);
 
 module.exports = router;
