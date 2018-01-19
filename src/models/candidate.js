@@ -45,10 +45,10 @@ const schemaObj = {
 
 // API Res
 function apiRepr () {
-    if(this._id.toString() === '5a5bda201a75bbcbb139cf6c') {
+    if(this.firstName === 'Brian' && this.lastName == 'Kelly') {
         this.imgUrl = 'http://www.kellyforussenate.com/images/happybrian.jpg';
     }
-    if(this._id.toString() === '5a5bda201a75bbcbb139cf6d') {
+    if(this.firstName === 'Ray' && this.lastName == 'Uhric') {
         this.imgUrl = 'https://res.cloudinary.com/crowdpac/image/upload/c_fill,f_auto,g_xy_center,h_160,q_auto,w_220,x_200,y_171/v1492124616/candidates/cand5838851ab0c132cb6c466d38';
     }
     return {
