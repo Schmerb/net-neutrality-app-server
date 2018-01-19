@@ -10,7 +10,7 @@ const express          = require('express'),
       engine           = require('ejs-mate');
 
 const router                 = require('routes');
-const { DATABASE_URL, PORT } = require('./config/database');
+const { DATABASE_URL, PORT, CLIENT_ORIGIN } = require('./config/database');
 
 
 // Use ES6 promises
