@@ -5,7 +5,7 @@
     "author": "",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js",
+        "start": "CLIENT_ORIGIN='https://suspicious-franklin-d3316b.netlify.com/' node server.js",
         "test": "mocha"
     },
     "dependencies": {
@@ -14,6 +14,7 @@
         "busboy-body-parser": "^0.3.0",
         "connect-mongo": "^1.3.2",
         "cookie-parser": "^1.4.3",
+        "cors": "^2.8.4",
         "ejs": "^2.5.7",
         "ejs-mate": "^2.3.0",
         "express": "^4.16.2",

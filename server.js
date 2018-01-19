@@ -6,6 +6,7 @@ const express          = require('express'),
       bodyParser       = require('body-parser'),
       cookieParser     = require('cookie-parser'),
       path             = require('path'),
+      cors             = require('cors'),
       engine           = require('ejs-mate');
 
 const router                 = require('routes');
@@ -27,16 +28,25 @@ app.set('views', path.join(__dirname, 'src/views'));
 
 // MIDDLEWARE
 
+// CORS
+app.use(
+  cors({
+      origin: [  // Whitelist 
+          CLIENT_ORIGIN
+      ]
+  })
+);
+
 // C.O.R.S.
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-  if (req.method === 'OPTIONS') {
-    return res.send(204);
-  }
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+//   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+//   if (req.method === 'OPTIONS') {
+//     return res.send(204);
+//   }
+//   next();
+// });
 
 app.use(express.static(path.join(__dirname, 'public'))); // root folder for static files
 app.use(morgan('common')); // log the http layer
