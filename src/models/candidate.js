@@ -51,12 +51,18 @@ function apiRepr () {
     if(this.firstName === 'Ray' && this.lastName == 'Uhric') {
         this.imgUrl = 'https://res.cloudinary.com/crowdpac/image/upload/c_fill,f_auto,g_xy_center,h_160,q_auto,w_220,x_200,y_171/v1492124616/candidates/cand5838851ab0c132cb6c466d38';
     }
+    let district;
+    if(this['house-senate'] === 'senate') {
+        district = 'null';
+    } else {
+        district = this.district || 'unknown';
+    }
     return {
         id: this._id,
         firstName: this.firstName || '',
         lastName: this.lastName || '',
         state: this.state || '',
-        district: this.district || 'unknown',
+        district: district,
         party: this.party || '',
         campaignWebsite: this.campaignWebsite || '',
         supportsNetNeutrality: this.supportsNetNeutrality || 'unknown',
