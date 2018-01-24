@@ -78,7 +78,7 @@ function apiRepr () {
 function getDefaultImage(fname, lname) {
     let p = gender.guess(`${fname} ${lname}`);
     return p.gender === 'female' ? 
-            'https://commons.wikimedia.org/wiki/File:Blank_woman_placeholder.svg#/media/File:Blank_woman_placeholder.svg'
+            'https://upload.wikimedia.org/wikipedia/commons/5/53/Blank_woman_placeholder.svg'
             :
             'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Upload_free_image_notext.svg/2000px-Upload_free_image_notext.svg.png';
 }
