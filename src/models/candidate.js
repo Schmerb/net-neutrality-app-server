@@ -1,6 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const gender   = require('gender');
 
 // generic candidate data schema
 const schemaObj = {
@@ -33,9 +34,8 @@ const schemaObj = {
     source: {
         type: String
     },
-    imgUrl: {
-        type: String,
-        default: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Bob_Casey%2C_official_Senate_photo_portrait%2C_c2008.jpg'
+    imageURL: {
+        type: String
     },
     'house-senate': {
         type: String,
@@ -45,12 +45,11 @@ const schemaObj = {
 
 // API Res
 function apiRepr () {
-    if(this.firstName === 'Brian' && this.lastName == 'Kelly') {
-        this.imgUrl = 'http://www.kellyforussenate.com/images/happybrian.jpg';
+    let imageURL = this.imageURL;
+    if(!imageURL || imageURL === '' || !imageURL.includes('http')) {
+        imageURL = getDefaultImage(this.firstName, this.lastName);
     }
-    if(this.firstName === 'Ray' && this.lastName == 'Uhric') {
-        this.imgUrl = 'https://res.cloudinary.com/crowdpac/image/upload/c_fill,f_auto,g_xy_center,h_160,q_auto,w_220,x_200,y_171/v1492124616/candidates/cand5838851ab0c132cb6c466d38';
-    }
+
     let district;
     if(this['house-senate'] === 'senate') {
         district = 'null';
@@ -67,9 +66,21 @@ function apiRepr () {
         campaignWebsite: this.campaignWebsite || '',
         supportsNetNeutrality: this.supportsNetNeutrality || 'unknown',
         source: this.source || '',
-        imgUrl: this.imgUrl,
+        imageURL: imageURL,
         'house-senate': this['house-senate'],
     };
+}
+
+//
+// Returns default image url depending if candidate
+// name is most likely male or female
+//
+function getDefaultImage(fname, lname) {
+    let p = gender.guess(`${fname} ${lname}`);
+    return p.gender === 'female' ? 
+            'https://commons.wikimedia.org/wiki/File:Blank_woman_placeholder.svg#/media/File:Blank_woman_placeholder.svg'
+            :
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Upload_free_image_notext.svg/2000px-Upload_free_image_notext.svg.png';
 }
 
 // Schema 
