@@ -13,11 +13,13 @@ exports.getAllCandidates = (req, res) => {
     let _res = {};
     HouseCandidate
         .find(queries)
+        .sort({ lastName: 1 })
         .exec()
         .then(houseCandidates => {
             _res.house = houseCandidates.map(candidate => candidate.apiRepr());
             return SenateCandidate
                 .find(queries)
+                .sort({ lastName: 1 })
                 .exec()
         })
         .then(senateCandidateas => {
@@ -38,6 +40,7 @@ exports.getHouseCandidates = (req, res) => {
     }
     HouseCandidate
         .find(queries)
+        .sort({ lastName: 1 })
         .exec()
         .then(houseCandidates => {
             res.status(200).json({house: houseCandidates.map(candidate => candidate.apiRepr())});
@@ -57,6 +60,7 @@ exports.getSenateCandidates = (req, res) => {
     }
     SenateCandidate
         .find(queries)
+        .sort({ lastName: 1 })
         .exec()
         .then(senateCandidates => {
             res.status(200).json({senate: senateCandidates.map(candidate => candidate.apiRepr())});
