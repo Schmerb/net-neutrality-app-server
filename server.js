@@ -9,7 +9,7 @@ const express          = require('express'),
       cors             = require('cors'),
       engine           = require('ejs-mate');
 
-const router                 = require('routes');
+const router = require('routes');
 const { DATABASE_URL, PORT, CLIENT_ORIGIN } = require('./config/database');
 
 
